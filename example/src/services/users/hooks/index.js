@@ -9,7 +9,8 @@ exports.before = {
   get: [],
   create: [
     transformHook({
-      username: v => v.toLowerCase().replaceAll(/\s/, '')
+      username: data => data.username.toLowerCase().replaceAll(/\s/, ''),
+      slug: data => data.title.slugify()
     })
   ],
   update: [],

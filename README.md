@@ -16,7 +16,8 @@ const transformHook = require('feathers-transform-hook')
 app.service('/users').before({
   create: [ 
     transformHook({
-      username: v => v.toLowerCase().replaceAll(/\s/, '')
+      username: data => data.username.toLowerCase().replaceAll(/\s/, ''),
+      slug: data => data.title.slugify()
     })
   ]
 })
@@ -28,12 +29,14 @@ Look [example folder](https://github.com/kulakowka/feathers-transform-hook/tree/
 
 Test request:
 ```
-curl -H "Accept: application/json" -d "username=        adM       in" -X POST http://localhost:3030/users
+curl -H "Accept: application/json" -d "title=Hello world&username=        adM       in" -X POST http://localhost:3030/users
 ```
 
 Server response example:
 ```
 {
-  "username": "admin"
+  "title": "Hello world",
+  "username": "admin",
+  "slug": "hello-world"
 }
 ```

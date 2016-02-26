@@ -11,12 +11,15 @@ npm start
 
 Test request:
 ```
-curl -H "Accept: application/json" -d "username=        adM       in" -X POST http://localhost:3030/users
+curl -H "Accept: application/json" -d "title=Hello world&username=        adM       in" -X POST http://localhost:3030/users
 ```
 
 Server response example:
 ```
 {
-  "username": "admin"
+  "title": "Hello world",
+  "username": "admin",
+  "slug": "hello-world"
 }
 ```
+
