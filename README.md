@@ -40,3 +40,23 @@ Server response example:
   "slug": "hello-world"
 }
 ```
+
+
+# P.S.
+
+Now, this hook is just a convenient wrapper over [string.js](https://www.npmjs.com/package/string). Therefore, all the same, you can easily do without this hook.
+
+```javascript
+const marked = require('marked')
+const S = require('string')
+
+app.service('/articles').before({
+  create: [
+    hook => {
+      let data = hook.data
+      data.slug = S(data.title).slugify()
+      data.contentHtml = marked(data.content)
+    }
+  ]
+});
+```
