@@ -1,6 +1,6 @@
 {
   "name": "feathers-transform-hook",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "http://feathersjs.com",
   "description": "Feathers hook for transform hook.data parameters",
   "repository": {
@@ -9,6 +9,7 @@
   },
   "keywords": [
     "feathers",
+    "feathers-plugin",
     "transform",
     "modify"
   ],
